@@ -30,7 +30,6 @@ export default {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         color: #000;
-        padding-top: 60px;
         position: relative;
         min-height: 100vh;
     }
@@ -49,6 +48,6 @@ export default {
     }
 
     .common-page{
-        padding-bottom: 80px;
+        padding-top: 140px;
     }
 </style>

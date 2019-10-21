@@ -53,8 +53,10 @@ export default {
     methods: {
         handleClick(link) {
             this.$router.push(link);
+            this.showSearchPanel = false;
         },
         toggleSearchPanel() {
+            console.log(this.showSearchPanel);
             this.showSearchPanel = !this.showSearchPanel;
         }
     },

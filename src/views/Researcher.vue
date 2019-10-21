@@ -208,7 +208,6 @@ export default {
             width: 800px;
             margin: 0 auto;
             font-size: 14px;
-            padding-top: 80px;
 
             .section {
                 margin-bottom: 80px;

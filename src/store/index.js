@@ -9,6 +9,7 @@ export default new Vuex.Store({
     state: {
         searchResult: {},
         currentResearcher: {},
+        currentPaper: {},
         publicationYears: [],
         publicationFromYear: '',
         publicationToYear: ''
@@ -33,6 +34,9 @@ export default new Vuex.Store({
         },
         'UPDATE_PUBLICATION_TO_YEAR'(state, payload) {
             state.publicationToYear = payload;
+        },
+        'UPDATE_CURRENT_PAPER'(state, payload) {
+            state.currentPaper = payload;
         }
     },
     actions: {
@@ -48,6 +52,13 @@ export default new Vuex.Store({
                 params: params
             }).then((res) => {
                 commit('UPDATE_CURRENT_RESEARCHER', res.data);
+            });
+        },
+        'GET_PAPER_INFO'({ commit, state }, params) {
+            axios.get(`${SERVER_ADDRESS}${API_PREFIX}/paper`, {
+                params: params
+            }).then((res) => {
+                commit('UPDATE_CURRENT_PAPER', res.data);
             });
         }
     }

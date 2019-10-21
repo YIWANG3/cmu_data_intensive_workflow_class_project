@@ -47,7 +47,7 @@ export default {
                 window.location.hash = `/researcher?id=${item.id}`;
                 break;
             case 1:
-                console.log(item);
+                window.location.hash = `/paper?id=${item.id}`;
                 break;
             case 2:
                 console.log(item);
@@ -65,7 +65,6 @@ export default {
 </script>
 <style lang="less">
     .search-result-page{
-        padding-top: 80px;
         .result-container {
             width: 800px;
             margin: 0 auto;
