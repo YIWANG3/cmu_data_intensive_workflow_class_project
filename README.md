@@ -1,4 +1,4 @@
-# diw_project
+# Data Intensive Workflow Class Project
 
 ## Project setup
 ```
