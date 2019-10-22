@@ -10,9 +10,11 @@ export default new Vuex.Store({
         searchResult: {},
         currentResearcher: {},
         currentPaper: {},
+        currentChannel: {},
         publicationYears: [],
         publicationFromYear: '',
-        publicationToYear: ''
+        publicationToYear: '',
+        currentTopicYear: ''
     },
     mutations: {
         'UPDATE_SEARCH_RESULT'(state, payload) {
@@ -37,6 +39,17 @@ export default new Vuex.Store({
         },
         'UPDATE_CURRENT_PAPER'(state, payload) {
             state.currentPaper = payload;
+        },
+        'UPDATE_CURRENT_CHANNEL'(state, payload) {
+            if (payload.statistic && payload.statistic.length > 0) {
+                for (let i = 0; i < payload.statistic.length; i++) {
+                    payload.statistic[i].vol = 'Vol ' + payload.statistic[i].vol;
+                }
+            }
+            state.currentChannel = payload;
+        },
+        'UPDATE_CURRENT_TOPIC_YEAR'(state, payload) {
+            state.currentTopicYear = payload;
         }
     },
     actions: {
@@ -59,6 +72,13 @@ export default new Vuex.Store({
                 params: params
             }).then((res) => {
                 commit('UPDATE_CURRENT_PAPER', res.data);
+            });
+        },
+        'GET_CHANNEL_INFO'({ commit, state }, params) {
+            axios.get(`${SERVER_ADDRESS}${API_PREFIX}/channel`, {
+                params: params
+            }).then((res) => {
+                commit('UPDATE_CURRENT_CHANNEL', res.data);
             });
         }
     }

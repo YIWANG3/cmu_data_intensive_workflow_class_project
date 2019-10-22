@@ -29,6 +29,10 @@ const routes = [{
     path: '/paper',
     name: 'paper',
     component: () => import(/* webpackChunkName: "about" */ '../views/Paper.vue')
+}, {
+    path: '/channel',
+    name: 'channel',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Channel.vue')
 }];
 
 const router = new VueRouter({

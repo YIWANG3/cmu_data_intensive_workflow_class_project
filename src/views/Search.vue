@@ -50,7 +50,7 @@ export default {
                 window.location.hash = `/paper?id=${item.id}`;
                 break;
             case 2:
-                console.log(item);
+                window.location.hash = `/channel?id=${item.id}`;
                 break;
             case 3:
                 console.log(item);

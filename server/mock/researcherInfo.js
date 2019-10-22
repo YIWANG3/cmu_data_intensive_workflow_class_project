@@ -1,4 +1,6 @@
 module.exports = {
+    'success': true,
+    'message': 'Get Researcher Information',
     'avatar': 'https://ieeexplore.ieee.org/mediastore_new/IEEE/content/freeimages/6287639/8600701/8843981/emadi-2942148-small.gif',
     'name': 'Ali Emadi',
     'affiliation': 'McMaster Institute for Automotive Research and Technology',
