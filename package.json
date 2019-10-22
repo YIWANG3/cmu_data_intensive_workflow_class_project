@@ -19,7 +19,8 @@
     "query-string": "^6.8.3",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "wordcloud": "^1.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.0",

@@ -47,6 +47,7 @@ export default new Vuex.Store({
                 }
             }
             state.currentChannel = payload;
+            state.currentTopicYear = payload.allTopics && payload.allTopics[0] && payload.allTopics[0].year;
         },
         'UPDATE_CURRENT_TOPIC_YEAR'(state, payload) {
             state.currentTopicYear = payload;

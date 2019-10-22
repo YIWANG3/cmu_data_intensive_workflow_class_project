@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="section-topic section" v-if="channel.allTopics && channel.allTopics.length > 0">
-                <div class="section-title">Topic</div>
+                <div class="section-title">Topics</div>
                 <div class="section-content">
                     <div class="year-selection">
                         <div class="single-selection">
@@ -35,6 +35,7 @@
                         </div>
                     </div>
                     <div class="topic-graph" id="topic-graph">
+<!--                        <canvas id="topic-graph-canvas"></canvas>-->
                     </div>
                 </div>
             </div>
@@ -47,6 +48,7 @@
 
 <script>
 import CustomFooter from '../components/CustomFooter';
+import wordCloud from 'wordcloud';
 
 const queryString = require('query-string');
 const echarts = require('echarts');
@@ -85,7 +87,8 @@ export default {
     name: 'home',
     data() {
         return {
-            graphInit: false
+            graphInit: false,
+            topicGraphInit: false
         };
     },
     beforeMount() {
@@ -96,6 +99,10 @@ export default {
     },
     updated() {
         this.initStatisticGraph();
+        if (!this.topicGraphInit) {
+            this.updateTopics();
+            this.topicGraphInit = true;
+        }
     },
     computed: {
         channel() {
@@ -120,10 +127,24 @@ export default {
         initStatisticGraph() {
             if (!this.graphInit) {
                 drawGraph(document.getElementById('statistic-graph'), this.statistic);
+                this.graphInit = true;
             }
         },
         updateTopics() {
-            console.log('123');
+            let allTopics = this.channel.allTopics;
+            let yearIndex = allTopics.findIndex(item => item.year === this.currentTopicYear);
+            let newData = allTopics[yearIndex].topics.map(item => [item.word, item.score]);
+            let topScore = newData[0][1];
+            wordCloud(document.getElementById('topic-graph'), { list: newData,
+                color: function (word, weight) {
+                    return (weight === topScore) ? '#f01700' : '#9c0010';
+                },
+                backgroundColor: '#f9f9f9',
+                weightFactor: function (size) {
+                    return size * 0.8;
+                },
+                rotateRatio: 0
+            });
         }
     },
     components: {
@@ -184,6 +205,7 @@ export default {
                     .year-selection {
                         display: flex;
                         align-items: center;
+                        margin-bottom: 30px;
 
                         .single-selection {
                             display: flex;

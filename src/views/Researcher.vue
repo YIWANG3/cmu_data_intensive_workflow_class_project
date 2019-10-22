@@ -125,7 +125,7 @@ function drawGraph(dom, data) {
         grid: {
             left: 20,
             right: 0,
-            top: 40
+            top: 10
         }
     });
 }
@@ -305,6 +305,7 @@ export default {
                     .year-range-selection {
                         display: flex;
                         align-items: center;
+                        margin-bottom: 30px;
 
                         .single-selection {
                             display: flex;
