@@ -1,4 +1,7 @@
-# Data Intensive Workflow Class Project
+# Data Intensive Workflow Class Project - A scholar network site based on Graph Database (Neo4j)
+
+## Demo
+Full Demo url: https://www.youtube.com/watch?v=hoPY2v2IcQI&t=63s
 
 ## Project setup
 ```
@@ -19,3 +22,4 @@ npm run build
 ```
 npm run server
 ```
+
